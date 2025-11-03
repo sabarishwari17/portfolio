@@ -6,7 +6,7 @@
     <title>Sabharishwari P|Portfolio</title>
     <!-- Using Google Font for a clean look -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons (LinkedIn, GitHub, Email) -->
+    <!-- Font Awesome for icons (LinkedIn, GitHub, Email, Camera) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
@@ -14,7 +14,7 @@
         :root {
             /* BLACK THEME PALETTE */
             --primary-color: #00a2ff; /* Brighter Professional Blue for contrast on black */
-            --primary-dark: #117e00; /* Darker Blue Accent for Hover */
+            --primary-dark: #007bbd; /* Darker Blue Accent for Hover */
             --secondary-color: #FAFAFA; /* Light text/headings */
             --light-bg: #1A1A1A; /* Darker background for section contrast */
             --text-color: #B0B0B0; /* Muted light gray for body text */
@@ -92,33 +92,64 @@
             overflow: hidden;
         }
 
-        /* NEW: Background Name Watermark Effect */
+        /* Background Name Watermark Effect */
         .hero::before {
             content: attr(data-name);
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 15vw;
+            font-size: 10vw; 
             font-weight: 800;
             color: var(--primary-color);
-            opacity: 0.07;
+            opacity: 0.05; 
             pointer-events: none;
             white-space: nowrap;
+            letter-spacing: 2px;
             z-index: 0;
         }
 
-        .profile-photo {
+        /* --- Profile Uploader (Clean Click Area) --- */
+        .profile-uploader {
+            position: relative;
             width: 160px;
             height: 160px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 25px;
-            border: 6px solid var(--primary-color);
-            box-shadow: var(--shadow);
-            position: relative;
-            z-index: 1;
+            margin: 0 auto 25px;
+            cursor: pointer; /* Indicates it's clickable */
+            z-index: 1; /* Ensure it sits above the watermark */
         }
+        
+        .profile-photo, .profile-initials {
+             /* Make sure they share the same container size and styling */
+             width: 100%;
+             height: 100%;
+             object-fit: cover;
+             border-radius: 50%;
+             box-shadow: var(--shadow);
+             position: absolute;
+             top: 0;
+             left: 0;
+             z-index: 1;
+             border: 6px solid var(--primary-color);
+             transition: filter 0.3s ease;
+        }
+
+        /* Monogram/Initials Style (for when no photo is uploaded) */
+        .profile-initials {
+            display: flex; /* Centers the text */
+            justify-content: center;
+            align-items: center;
+            font-size: 3.5em; /* Large text size */
+            font-weight: 800;
+            color: var(--white); /* White/Near-black text */
+            background-color: var(--primary-color); /* Bright blue background */
+        }
+
+        .profile-uploader:hover .profile-photo,
+        .profile-uploader:hover .profile-initials {
+            filter: brightness(0.7); /* Darken both on hover to give visual feedback */
+        }
+        /* End Profile Uploader styles */
 
         .hero h1, .hero h2, .hero p, .social-links {
             position: relative;
@@ -129,7 +160,7 @@
             font-size: 3em;
             margin-bottom: 5px;
             font-weight: 800;
-            color: var(--secondary-color); /* Ensure hero heading is light */
+            color: var(--secondary-color); 
         }
 
         .hero h2 {
@@ -143,7 +174,7 @@
             font-size: 1.1em;
             max-width: 600px;
             margin: 0 auto 30px;
-            color: var(--text-color); /* Ensure hero text is light */
+            color: var(--text-color); 
         }
 
         /* --- Social Links --- */
@@ -160,7 +191,7 @@
 
         .social-links a:hover {
             background-color: var(--primary-color);
-            color: var(--white); /* White/Near-black on hover */
+            color: var(--white); 
         }
 
         .social-links i {
@@ -188,7 +219,7 @@
             margin-left: auto;
             margin-right: auto;
         }
-
+        
         /* --- About Section Specific Styles --- */
         .about-features {
             display: flex;
@@ -363,7 +394,6 @@
             color: var(--text-color); /* Ensure timeline text is visible */
         }
 
-
         /* --- Footer --- */
         footer {
             background-color: var(--light-bg); /* Dark footer background */
@@ -420,11 +450,14 @@
                 margin-bottom: 15px;
             }
             .hero::before {
-                font-size: 20vw;
+                /* Reduced size on small screens for better fit */
+                font-size: 15vw; 
+                opacity: 0.05;
+                letter-spacing: 1px; 
             }
         }
         
-        /* --- NEW: Scroll Reveal Animation CSS --- */
+        /* --- Scroll Reveal Animation CSS --- */
         .fade-slide-in {
             /* Initial state: Hidden and moved down */
             opacity: 0;
@@ -450,27 +483,40 @@
                 <a href="#hero">Sabharishwari P</a>
             </div>
             <div class="nav-links">
-                <a href="#about">About</a> <!-- NEW LINK -->
-                <a href="#skills">Skills</a>
+                <a href="#about">About</a> <a href="#skills">Skills</a>
                 <a href="#projects">Projects</a>
                 <a href="#education">Education</a>
-                <a href="#contact">Contact</a> <!-- UPDATED LINK -->
-            </div>
+                <a href="#contact">Contact</a> </div>
         </div>
     </nav>
 
     <!-- Header Section (Hero) -->
-    <!-- Added data-name attribute for the CSS watermark -->
     <header id="hero" class="hero" data-name="Sabharishwari.P">
         <div class="container">
-            <!-- Note: The local image path (C:\...) is replaced by a functional placeholder URL if it fails to load. -->
-            <!-- Adding 'fade-slide-in' for on-load animation -->
-            <img src="C:\Users\vijay\tcs\WhatsApp Image 2025-09-21 at 17.21.47_67392565.jpg" onerror="this.src='https://placehold.co/160x160/00AFFF/0D0D0D?text=HR'" alt="Your Professional Photo" class="profile-photo fade-slide-in">
+            <!-- Profile Uploader Container - Now the whole area is clickable -->
+            <div class="profile-uploader fade-slide-in">
+                <!-- 1. Image Tag - Initially hidden (style="display: none;"), visible if photo is uploaded -->
+                <img id="profileImage" src="" 
+                     alt="Your Profile Photo" 
+                     class="profile-photo" 
+                     style="display: none;">
+                
+                <!-- 2. Initials Monogram - Visible by default, hidden if photo is uploaded -->
+                <div id="profileInitials" class="profile-initials">SP</div>
+                
+                <!-- Hidden File Input - No longer linked by a visible label/icon -->
+                <input type="file" id="fileInput" accept="image/*" style="display: none;">
+            </div>
+
+            <!-- Loading Indicator for Image Upload -->
+            <div id="loadingIndicator" style="display: none; color: var(--primary-color); margin-top: -20px; margin-bottom: 10px;" class="fade-slide-in">
+                <i class="fas fa-sync-alt fa-spin"></i> Uploading...
+            </div>
+            
             <h1 class="fade-slide-in">Hi, I'm Sabharishwari P</h1>
             <h2 class="fade-slide-in">Fresher Data Analytics | Full Stack Developer</h2>
             <p class="fade-slide-in">Invest in your dreams and future. Let's build something great.</p>
             <div class="social-links">
-                <!-- Social links also get the class for a staggered load effect -->
                 <a href="https://www.linkedin.com/in/sabarishwari21" target="_blank" class="fade-slide-in"><i class="fab fa-linkedin"></i> LinkedIn</a>
                 <a href="https://github.com/sabarishwari17"target="_blank" class="fade-slide-in"><i class="fab fa-github"></i> GitHub</a>
                 <a href="mailto:sabarisathya37@gmail.com" class="fade-slide-in"><i class="fas fa-envelope"></i> Email Me</a>
@@ -478,8 +524,7 @@
             <!-- Resume Section -->
             <section id="resume" class="section" style="padding: 30px 0;">
                 <div class="container" style="text-align: center;">
-                    <!-- Download Resume Button gets the class -->
-                    <a href="Sabari_Resume.docx" download class="btn-primary fade-slide-in">
+                    <a href="Sabari_Resume.pdf" download="Sabari_Resume.pdf" class="btn-primary fade-slide-in">
                         <i class="fas fa-download"></i> Download Resume
                     </a>
                 </div>
@@ -487,25 +532,24 @@
         </div>
     </header>
 
-    <!-- NEW: About Me / Technical Summary Section -->
+    <!-- About Me / Technical Summary Section -->
     <section id="about" class="section" style="background-color: var(--white);">
         <div class="container" style="max-width: 900px;">
             <h2 class="fade-slide-in">💡 About Me & Technical Summary</h2>
             <div style="text-align: left;">
                 <p style="font-size: 1.1em; margin-bottom: 30px; color: var(--text-color);" class="fade-slide-in">I am a recent graduate in B.Tech(AI & DS) who thrives on solving complex problems with efficient and scalable code. My foundational belief is in continuous learning and collaboration, ensuring the delivery of robust solutions.</p>
                 
-                <h3 class="fade-slide-in">Data Analysis</h3>
-                <p style="margin-bottom: 30px; color: var(--text-color);" class="fade-slide-in">ethical and logical approach to how data is collected, processed, and used. It ensures that analytics is done responsibly, transparently, and for a useful purpose — protecting privacy, avoiding bias, and improving decision-making through fair use of data.</p>
+                <h3 class="fade-slide-in">Data Analysis Philosophy</h3>
+                <p style="margin-bottom: 30px; color: var(--text-color);" class="fade-slide-in">I approach data analysis with an ethical and logical mindset, ensuring data is collected, processed, and used responsibly, transparently, and for a useful purpose—protecting privacy, avoiding bias, and improving decision-making through fair use of data.</p>
                 
                 <div class="about-features">
-                    <!-- Feature Cards get the class -->
                     <div class="fade-slide-in">
                         <i class="fas fa-layer-group fa-2x" style="color: var(--primary-color); margin-bottom: 10px;"></i>
-                        <p><strong>web interface</strong></p>
+                        <p><strong>Front-End / UI/UX</strong></p>
                     </div>
                     <div class="fade-slide-in">
                         <i class="fas fa-rocket fa-2x" style="color: var(--primary-color); margin-bottom: 10px;"></i>
-                        <p><strong>Data Science</strong></p>
+                        <p><strong>Data Science Modeling</strong></p>
                     </div>
                     <div class="fade-slide-in">
                         <i class="fas fa-shield-alt fa-2x" style="color: var(--primary-color); margin-bottom: 10px;"></i>
@@ -521,9 +565,8 @@
         <div class="container">
             <h2 class="fade-slide-in">🛠️ Core Skills</h2>
             <div class="skills-grid">
-                <!-- Skill Tags get the class -->
-                <span class="skill-tag fade-slide-in">Python language</span>
-                <span class="skill-tag fade-slide-in">Web Interface language </span>
+                <span class="skill-tag fade-slide-in">Python</span>
+                <span class="skill-tag fade-slide-in">HTML/CSS/JavaScript</span> 
                 <span class="skill-tag fade-slide-in">Data Analysis</span>
                 <span class="skill-tag fade-slide-in">Data Science</span>
                 <span class="skill-tag fade-slide-in">Artificial Intelligence</span>
@@ -539,30 +582,13 @@
         <div class="container">
             <h2 class="fade-slide-in">💻 Personal Projects</h2>
             <div class="projects-grid">
-                <!-- Project Cards get the class -->
                 <div class="project-card fade-slide-in">
                     <h3>Weather Dashboard </h3>
-                    <p>Designed and implemented a scalable RESTful API for an e-commerce backend, handling product inventory, user authentication, and order processing.</p>
+                    <p>A real-time dashboard built using front-end technologies to fetch and display weather data, focusing on responsive design and clean data presentation.</p>
                     <p class="tech-used">Python, HTML, JavaScript, CSS</p>
-                    <a href="hhttps://github.com/sabarishwari17/WEATHER_DASHBOARD_" target="_blank" class="project-link">Source Code <i class="fab fa-github"></i></a>
+                    <a href="https://github.com/sabarishwari17/WEATHER_DASHBOARD_" target="_blank" class="project-link">Source Code <i class="fab fa-github"></i></a>
                 </div>
-                <!-- Project Card 2 (Placeholder) 
-                <div class="project-card fade-slide-in">
-                    <h3>Data Visualization Dashboard</h3>
-                    <p>A web application built to consume data from a live API and visualize key metrics using interactive charts and graphs for real-time analysis.</p>
-                    <p class="tech-used">Python (Pandas), JavaScript (D3.js), HTML, CSS</p>
-                    <a href="#" class="project-link">View Demo <i class="fas fa-external-link-alt"></i></a> 
-                    <a href="#" class="project-link">Source Code <i class="fab fa-github"></i></a>
                 </div>
-                <div class="project-card fade-slide-in">
-                    <h3>AI/ML Model Deployment</h3>
-                    <p>Developed and deployed a machine learning model (e.g., image classifier or regression model) using a cloud platform and Flask/Streamlit for the web interface.</p>
-                    <p class="tech-used">Python (Scikit-learn, Flask), Docker, AI/ML</p>
-                    <a href="#" class="project-link">View Demo <i class="fas fa-external-link-alt"></i></a> 
-                    <a href="#" class="project-link">Source Code <i class="fab fa-github"></i></a>
-                </div>-->
-
-            </div>
             
             <div style="text-align: center;">
                 <a href="https://github.com/sabarishwari17" class="btn-primary fade-slide-in" target="_blank">View More Projects</a>
@@ -576,7 +602,6 @@
             <h2 class="fade-slide-in">🎓 Education</h2>
             <div class="timeline">
                 
-                <!-- Timeline Items get the class -->
                 <div class="timeline-item fade-slide-in">
                     <h3>B.Tech in Artificial Intelligence & Data Science</h3>
                     <p class="timeline-meta">AVS Engineering College | Salem, Tamilnadu. | 2023 - 2027</p>
@@ -592,7 +617,7 @@
         </div>
     </section>
 
-    <!-- NEW: Dedicated Call to Action / Contact Section -->
+    <!-- Dedicated Call to Action / Contact Section -->
     <section id="contact" class="section" style="background-color: var(--white);">
         <div class="container" style="text-align: center;">
             <h2 class="fade-slide-in">👋 Let's Connect</h2>
@@ -603,7 +628,6 @@
             </a>
 
             <div class="social-links" style="margin-top: 30px;">
-                <!-- Social links here are part of the last section's animation -->
                 <a href="https://www.linkedin.com/in/sabarishwari21/" target="_blank" class="fade-slide-in"><i class="fab fa-linkedin"></i> LinkedIn</a>
                 <a href="https://github.com/sabarishwari17" target="_blank" class="fade-slide-in"><i class="fab fa-github"></i> GitHub</a>
             </div>
@@ -618,28 +642,195 @@
         </div>
     </footer>
 
-    <!-- NEW: JavaScript for Scroll Reveal Effect -->
-    <script>
+    <!-- JavaScript for Firebase and Scroll Reveal Effect -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        
+        // Set Firestore log level to debug for better console output
+        setLogLevel('debug'); 
+
+        // Global variables provided by the environment
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        const authToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        let db;
+        let auth;
+        let userId = null;
+        let isAuthReady = false;
+
+        const profileUploader = document.querySelector('.profile-uploader');
+        const fileInput = document.getElementById('fileInput');
+
+        // New event listener: Click anywhere on the profile circle to trigger the file input
+        profileUploader.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+
+        // Utility function to convert file to Base64
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+            });
+        }
+
+        // --- Firebase Core Functions ---
+        async function initializeFirebase() {
+            try {
+                const app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+
+                // Sign in using the custom token or anonymously if not available
+                if (authToken) {
+                    await signInWithCustomToken(auth, authToken);
+                } else {
+                    await signInAnonymously(auth);
+                }
+
+                onAuthStateChanged(auth, (user) => {
+                    if (user) {
+                        userId = user.uid;
+                        isAuthReady = true;
+                        console.log('Firebase Auth Ready. User ID:', userId);
+                        loadProfileImage();
+                    } else {
+                        console.error('Firebase Auth failed to establish user session.');
+                        // Fallback to a random ID for non-auth Firestore access (less secure)
+                        userId = crypto.randomUUID(); 
+                        isAuthReady = true;
+                        loadProfileImage(); // Attempt to load even if anonymous
+                    }
+                });
+
+            } catch (error) {
+                console.error("Error initializing Firebase or signing in:", error);
+                // Ensure initials are shown if Firebase initialization fails
+                document.getElementById('profileImage').style.display = 'none';
+                document.getElementById('profileInitials').style.display = 'flex';
+            }
+        }
+
+        // --- Firestore Data Handlers ---
+
+        function getProfileDocRef() {
+            if (!userId || !db) return null;
+            // Private data path for the profile image
+            const path = `/artifacts/${appId}/users/${userId}/profile/image_data`;
+            return doc(db, path);
+        }
+
+        async function loadProfileImage() {
+            if (!isAuthReady) return;
+            const profileRef = getProfileDocRef();
+            if (!profileRef) return;
+
+            try {
+                const docSnap = await getDoc(profileRef);
+                const profileImageElement = document.getElementById('profileImage');
+                const profileInitialsElement = document.getElementById('profileInitials');
+                
+                if (docSnap.exists() && docSnap.data().base64Image) {
+                    const base64Image = docSnap.data().base64Image;
+                    profileImageElement.src = base64Image;
+                    profileImageElement.style.display = 'block'; // Show photo
+                    profileInitialsElement.style.display = 'none'; // Hide initials
+                    console.log("Profile image loaded from Firestore.");
+                } else {
+                    // If no image is saved, show the initials monogram
+                    profileImageElement.style.display = 'none'; // Hide photo
+                    profileInitialsElement.style.display = 'flex'; // Show initials
+                    console.log("No profile image found in Firestore. Showing initials monogram (SP).");
+                }
+            } catch (error) {
+                console.error("Error loading profile image:", error);
+                // On error, ensure initials are visible as fallback
+                document.getElementById('profileImage').style.display = 'none';
+                document.getElementById('profileInitials').style.display = 'flex';
+            }
+        }
+
+        async function saveProfileImage(base64Image) {
+            if (!isAuthReady || !userId) {
+                console.error("Authentication not ready or user ID missing. Cannot save image.");
+                return;
+            }
+            
+            const profileRef = getProfileDocRef();
+            if (!profileRef) return;
+
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            loadingIndicator.style.display = 'block';
+
+            try {
+                await setDoc(profileRef, {
+                    base64Image: base64Image,
+                    lastUpdated: new Date().toISOString()
+                });
+                console.log("Profile image saved successfully to Firestore.");
+            } catch (error) {
+                console.error("Error saving profile image:", error);
+            } finally {
+                loadingIndicator.style.display = 'none';
+            }
+        }
+
+        // --- Event Listener ---
+
+        fileInput.addEventListener('change', async (event) => {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            // Ensure the file is an image and not too large (e.g., limit to 1MB)
+            if (!file.type.startsWith('image/') || file.size > 1048576) {
+                console.error("Please select an image file under 1MB.");
+                event.target.value = null; // Clear the input
+                return;
+            }
+            
+            try {
+                const base64String = await fileToBase64(file);
+                
+                // Update the visible elements immediately
+                const profileImageElement = document.getElementById('profileImage');
+                const profileInitialsElement = document.getElementById('profileInitials');
+
+                profileImageElement.src = base64String;
+                profileImageElement.style.display = 'block'; // Show photo
+                profileInitialsElement.style.display = 'none'; // Hide initials
+
+                // Save to Firestore for persistence
+                await saveProfileImage(base64String);
+
+            } catch (error) {
+                console.error("Failed to process or save image:", error);
+            }
+            event.target.value = null; // Clear the input after processing
+        });
+
+        // --- Scroll Reveal Effect (Kept as is) ---
         document.addEventListener('DOMContentLoaded', () => {
+            initializeFirebase();
+
             // Elements that are visible immediately (Hero section)
             const heroElements = document.querySelectorAll('.hero .fade-slide-in, #resume .fade-slide-in');
             
             // Elements to observe for the slide effect (scrolled content)
             const observedElements = [
-                // About Section
                 ...document.querySelectorAll('#about .fade-slide-in'),
-                // Skills Section
                 ...document.querySelectorAll('#skills .fade-slide-in'),
-                // Projects Section
                 ...document.querySelectorAll('#projects .fade-slide-in'),
-                // Education Section
                 ...document.querySelectorAll('#education .fade-slide-in'),
-                // Contact Section
                 ...document.querySelectorAll('#contact .fade-slide-in'),
-                
             ];
 
-            // 1. Handle Staggered Delay for skills, feature cards, and social links
             const staggeredElements = [
                 ...document.querySelectorAll('.skill-tag'), 
                 ...document.querySelectorAll('.about-features > div'),
@@ -648,34 +839,27 @@
             ];
 
             staggeredElements.forEach((el, index) => {
-                // Apply a delay based on the index for a cascading effect
                 el.style.transitionDelay = `${(index % 4) * 0.15}s`;
             });
 
-
-            // 2. Intersection Observer Logic for elements below the fold
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        // Stop observing once it's visible
                         observer.unobserve(entry.target);
                     }
                 });
             }, {
                 rootMargin: '0px',
-                threshold: 0.1 // Trigger when 10% of the element is visible
+                threshold: 0.1
             });
 
-            // Start observing all targeted elements that require scrolling
             observedElements.forEach(el => {
                 observer.observe(el);
             });
             
-            // 3. Trigger initial animation for Hero elements (always visible)
             heroElements.forEach((el, index) => {
-                 // Add a small delay for the initial hero elements
-                 if (index > 0) { // Skip the first element (photo) for a slightly better feel
+                 if (index > 0) {
                      el.style.transitionDelay = `${index * 0.1}s`;
                  }
                  el.classList.add('visible');
