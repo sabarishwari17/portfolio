@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabharishwari P|Portfolio</title>
+    <!-- Using Google Font for a clean look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons (LinkedIn, GitHub, Email) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* --- CSS Reset and Global Styles --- */
+        :root {
+            /* BLACK THEME PALETTE */
+            --primary-color: #00a2ff; /* Brighter Professional Blue for contrast on black */
+            --primary-dark: #117e00; /* Darker Blue Accent for Hover */
+            --secondary-color: #FAFAFA; /* Light text/headings */
+            --light-bg: #1A1A1A; /* Darker background for section contrast */
+            --text-color: #B0B0B0; /* Muted light gray for body text */
+            --white: #0D0D0D; /* Near-black for main background */
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.4); /* Stronger shadow for lift on dark bg */
+            --border-radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--white); /* Main background: Near-black */
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            color: var(--secondary-color); /* Headings are light */
+            margin-bottom: 15px;
+        }
+
+        /* --- Navigation Bar --- */
+        nav {
+            background-color: var(--white); /* Nav background: Near-black */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo a {
+            font-size: 1.5em;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: var(--text-color); /* Links are muted light gray */
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 25px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- Header (Hero) Section --- */
+        .hero {
+            background-color: var(--light-bg); /* Dark gray/black for hero background */
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* NEW: Background Name Watermark Effect */
+        .hero::before {
+            content: attr(data-name);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 15vw;
+            font-weight: 800;
+            color: var(--primary-color);
+            opacity: 0.07;
+            pointer-events: none;
+            white-space: nowrap;
+            z-index: 0;
+        }
+
+        .profile-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 25px;
+            border: 6px solid var(--primary-color);
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1, .hero h2, .hero p, .social-links {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 5px;
+            font-weight: 800;
+            color: var(--secondary-color); /* Ensure hero heading is light */
+        }
+
+        .hero h2 {
+            font-size: 1.4em;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.1em;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: var(--text-color); /* Ensure hero text is light */
+        }
+
+        /* --- Social Links --- */
+        .social-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0 15px;
+            padding: 10px 15px;
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            color: var(--white); /* White/Near-black on hover */
+        }
+
+        .social-links i {
+            margin-right: 8px;
+        }
+
+        /* --- General Section Styling --- */
+        .section {
+            padding: 80px 0;
+        }
+
+        .alt-bg {
+            background-color: var(--light-bg); /* Dark gray/black for alt sections */
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 2.2em;
+            font-weight: 800;
+            padding-bottom: 10px;
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- About Section Specific Styles --- */
+        .about-features {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            margin-top: 30px;
+            text-align: center;
+            flex-wrap: wrap;
+        }
+        .about-features > div {
+            flex-basis: 30%;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #333; /* Darker border */
+            background-color: var(--white); /* Card background: Near-black */
+            transition: box-shadow 0.3s ease;
+        }
+        .about-features > div:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+        .about-features p {
+            color: var(--text-color); /* Ensure feature text is visible */
+        }
+        .about-features strong {
+            color: var(--secondary-color); /* Ensure strong text is bright */
+        }
+
+        /* --- Skills Grid --- */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .skill-tag {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 175, 255, 0.4);
+        }
+
+        .skill-tag:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 5px 15px rgba(0, 175, 255, 0.6);
+        }
+
+        /* --- Projects --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--white); /* Card background: Near-black */
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .project-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5em;
+        }
+
+        .tech-used {
+            font-size: 0.9em;
+            color: #999; /* Lighter muted color */
+            margin: 10px 0 15px;
+            font-weight: 600;
+        }
+
+        .project-link {
+            color: var(--text-color); /* Project links are light */
+            text-decoration: none;
+            font-weight: 600;
+            margin-right: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--primary-color);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            margin-top: 30px;
+            transition: all 0.2s ease;
+            box-shadow: 0 6px 15px rgba(0, 175, 255, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            box-shadow: 0 8px 20px rgba(0, 175, 255, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 5px rgba(0, 175, 255, 0.3);
+        }
+
+        /* --- Education/Experience Timeline --- */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: 20px;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 20px;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 10px 0 20px 40px;
+            position: relative;
+            background-color: inherit;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            right: auto;
+            left: 13px;
+            background-color: var(--primary-color);
+            border: 3px solid var(--light-bg); /* Use dark section background for dot border */
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-meta {
+            font-style: italic;
+            color: #999; /* Lighter muted color */
+            margin-bottom: 5px;
+        }
+
+        .timeline-item h3 {
+            color: var(--secondary-color); /* Ensure heading is light */
+        }
+
+        .timeline-item p {
+            color: var(--text-color); /* Ensure timeline text is visible */
+        }
+
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--light-bg); /* Dark footer background */
+            color: var(--text-color);
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9em;
+            border-top: 3px solid var(--primary-dark);
+        }
+
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 768px) {
+            .nav-content {
+                flex-direction: column;
+            }
+            .nav-links {
+                padding-top: 15px;
+                text-align: center;
+            }
+            .nav-links a {
+                margin: 0 10px;
+                display: inline-block;
+            }
+            .hero {
+                padding: 80px 20px 60px;
+            }
+            .hero h1 { font-size: 2.5em; }
+            .hero h2 { font-size: 1.2em; }
+            .social-links {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            .social-links a {
+                padding: 8px 12px;
+                font-size: 0.9em;
+                margin: 0;
+            }
+            .section {
+                padding: 60px 0;
+            }
+            .timeline {
+                padding-left: 20px;
+            }
+            .timeline::after, .timeline-item::before {
+                left: 10px;
+            }
+            .timeline-item {
+                padding-left: 35px;
+            }
+            .about-features > div {
+                flex-basis: 100%;
+                margin-bottom: 15px;
+            }
+            .hero::before {
+                font-size: 20vw;
+            }
+        }
+        
+        /* --- NEW: Scroll Reveal Animation CSS --- */
+        .fade-slide-in {
+            /* Initial state: Hidden and moved down */
+            opacity: 0;
+            transform: translateY(30px);
+            /* Base transition: applies to all elements */
+            transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                        transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fade-slide-in.visible {
+            /* Final state: Fully visible and in place */
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="container nav-content">
+            <div class="logo">
+                <a href="#hero">Sabharishwari P</a>
+            </div>
+            <div class="nav-links">
+                <a href="#about">About</a> <!-- NEW LINK -->
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#education">Education</a>
+                <a href="#contact">Contact</a> <!-- UPDATED LINK -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section (Hero) -->
+    <!-- Added data-name attribute for the CSS watermark -->
+    <header id="hero" class="hero" data-name="Sabharishwari.P">
+        <div class="container">
+            <!-- Note: The local image path (C:\...) is replaced by a functional placeholder URL if it fails to load. -->
+            <!-- Adding 'fade-slide-in' for on-load animation -->
+            <img src="C:\Users\vijay\tcs\WhatsApp Image 2025-09-21 at 17.21.47_67392565.jpg" onerror="this.src='https://placehold.co/160x160/00AFFF/0D0D0D?text=HR'" alt="Your Professional Photo" class="profile-photo fade-slide-in">
+            <h1 class="fade-slide-in">Hi, I'm Sabharishwari P</h1>
+            <h2 class="fade-slide-in">Fresher Data Analytics | Full Stack Developer</h2>
+            <p class="fade-slide-in">Invest in your dreams and future. Let's build something great.</p>
+            <div class="social-links">
+                <!-- Social links also get the class for a staggered load effect -->
+                <a href="https://www.linkedin.com/in/sabarishwari21" target="_blank" class="fade-slide-in"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/sabarishwari17"target="_blank" class="fade-slide-in"><i class="fab fa-github"></i> GitHub</a>
+                <a href="mailto:sabarisathya37@gmail.com" class="fade-slide-in"><i class="fas fa-envelope"></i> Email Me</a>
+            </div>
+            <!-- Resume Section -->
+            <section id="resume" class="section" style="padding: 30px 0;">
+                <div class="container" style="text-align: center;">
+                    <!-- Download Resume Button gets the class -->
+                    <a href="Sabari_Resume.docx" download class="btn-primary fade-slide-in">
+                        <i class="fas fa-download"></i> Download Resume
+                    </a>
+                </div>
+            </section>
+        </div>
+    </header>
+
+    <!-- NEW: About Me / Technical Summary Section -->
+    <section id="about" class="section" style="background-color: var(--white);">
+        <div class="container" style="max-width: 900px;">
+            <h2 class="fade-slide-in">💡 About Me & Technical Summary</h2>
+            <div style="text-align: left;">
+                <p style="font-size: 1.1em; margin-bottom: 30px; color: var(--text-color);" class="fade-slide-in">I am a recent graduate in B.Tech(AI & DS) who thrives on solving complex problems with efficient and scalable code. My foundational belief is in continuous learning and collaboration, ensuring the delivery of robust solutions.</p>
+                
+                <h3 class="fade-slide-in">Data Analysis</h3>
+                <p style="margin-bottom: 30px; color: var(--text-color);" class="fade-slide-in">ethical and logical approach to how data is collected, processed, and used. It ensures that analytics is done responsibly, transparently, and for a useful purpose — protecting privacy, avoiding bias, and improving decision-making through fair use of data.</p>
+                
+                <div class="about-features">
+                    <!-- Feature Cards get the class -->
+                    <div class="fade-slide-in">
+                        <i class="fas fa-layer-group fa-2x" style="color: var(--primary-color); margin-bottom: 10px;"></i>
+                        <p><strong>web interface</strong></p>
+                    </div>
+                    <div class="fade-slide-in">
+                        <i class="fas fa-rocket fa-2x" style="color: var(--primary-color); margin-bottom: 10px;"></i>
+                        <p><strong>Data Science</strong></p>
+                    </div>
+                    <div class="fade-slide-in">
+                        <i class="fas fa-shield-alt fa-2x" style="color: var(--primary-color); margin-bottom: 10px;"></i>
+                        <p><strong>Secure Coding Practices</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section alt-bg">
+        <div class="container">
+            <h2 class="fade-slide-in">🛠️ Core Skills</h2>
+            <div class="skills-grid">
+                <!-- Skill Tags get the class -->
+                <span class="skill-tag fade-slide-in">Python language</span>
+                <span class="skill-tag fade-slide-in">Web Interface language </span>
+                <span class="skill-tag fade-slide-in">Data Analysis</span>
+                <span class="skill-tag fade-slide-in">Data Science</span>
+                <span class="skill-tag fade-slide-in">Artificial Intelligence</span>
+                <span class="skill-tag fade-slide-in">Machine Learning</span>
+                <span class="skill-tag fade-slide-in">Problem Solving</span>
+                <span class="skill-tag fade-slide-in">Team Collaboration</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section" style="background-color: var(--white);">
+        <div class="container">
+            <h2 class="fade-slide-in">💻 Personal Projects</h2>
+            <div class="projects-grid">
+                <!-- Project Cards get the class -->
+                <div class="project-card fade-slide-in">
+                    <h3>Weather Dashboard </h3>
+                    <p>Designed and implemented a scalable RESTful API for an e-commerce backend, handling product inventory, user authentication, and order processing.</p>
+                    <p class="tech-used">Python, HTML, JavaScript, CSS</p>
+                    <a href="hhttps://github.com/sabarishwari17/WEATHER_DASHBOARD_" target="_blank" class="project-link">Source Code <i class="fab fa-github"></i></a>
+                </div>
+                <!-- Project Card 2 (Placeholder) 
+                <div class="project-card fade-slide-in">
+                    <h3>Data Visualization Dashboard</h3>
+                    <p>A web application built to consume data from a live API and visualize key metrics using interactive charts and graphs for real-time analysis.</p>
+                    <p class="tech-used">Python (Pandas), JavaScript (D3.js), HTML, CSS</p>
+                    <a href="#" class="project-link">View Demo <i class="fas fa-external-link-alt"></i></a> 
+                    <a href="#" class="project-link">Source Code <i class="fab fa-github"></i></a>
+                </div>
+                <div class="project-card fade-slide-in">
+                    <h3>AI/ML Model Deployment</h3>
+                    <p>Developed and deployed a machine learning model (e.g., image classifier or regression model) using a cloud platform and Flask/Streamlit for the web interface.</p>
+                    <p class="tech-used">Python (Scikit-learn, Flask), Docker, AI/ML</p>
+                    <a href="#" class="project-link">View Demo <i class="fas fa-external-link-alt"></i></a> 
+                    <a href="#" class="project-link">Source Code <i class="fab fa-github"></i></a>
+                </div>-->
+
+            </div>
+            
+            <div style="text-align: center;">
+                <a href="https://github.com/sabarishwari17" class="btn-primary fade-slide-in" target="_blank">View More Projects</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Education/Experience Section -->
+    <section id="education" class="section alt-bg">
+        <div class="container">
+            <h2 class="fade-slide-in">🎓 Education</h2>
+            <div class="timeline">
+                
+                <!-- Timeline Items get the class -->
+                <div class="timeline-item fade-slide-in">
+                    <h3>B.Tech in Artificial Intelligence & Data Science</h3>
+                    <p class="timeline-meta">AVS Engineering College | Salem, Tamilnadu. | 2023 - 2027</p>
+                    <p>Achieved 100% attendance and focused deeply on machine learning algorithms and statistical data analysis techniques.</p>
+                </div>
+                <div class="timeline-item fade-slide-in">
+                    <h3>12th standard</h3>
+                    <p class="timeline-meta">Vani vikash Hr. sec. school | Attur, Tamilnadu. | 2021 - 2023</p>
+                    <p>Maintained a strong academic record and gained foundational knowledge in science and mathematics, achieving 100% attendance.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Dedicated Call to Action / Contact Section -->
+    <section id="contact" class="section" style="background-color: var(--white);">
+        <div class="container" style="text-align: center;">
+            <h2 class="fade-slide-in">👋 Let's Connect</h2>
+            <p style="font-size: 1.2em; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto;" class="fade-slide-in">I'm actively seeking opportunities in **Data Analytics** and **Front-end Development** and am ready to contribute immediately. Whether it's a job offer or a collaboration idea, my inbox is open!</p>
+            
+            <a href="mailto:sabarisathya37@gmail.com" class="btn-primary fade-slide-in" style="font-size: 1.2em; padding: 15px 40px; margin-bottom: 20px;">
+                <i class="fas fa-envelope"></i> Send Me An Email
+            </a>
+
+            <div class="social-links" style="margin-top: 30px;">
+                <!-- Social links here are part of the last section's animation -->
+                <a href="https://www.linkedin.com/in/sabarishwari21/" target="_blank" class="fade-slide-in"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/sabarishwari17" target="_blank" class="fade-slide-in"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>Ready to start the next opportunity. Let's connect!</p>
+            <p>&copy; 2024 Sabharishwari.P. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- NEW: JavaScript for Scroll Reveal Effect -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Elements that are visible immediately (Hero section)
+            const heroElements = document.querySelectorAll('.hero .fade-slide-in, #resume .fade-slide-in');
+            
+            // Elements to observe for the slide effect (scrolled content)
+            const observedElements = [
+                // About Section
+                ...document.querySelectorAll('#about .fade-slide-in'),
+                // Skills Section
+                ...document.querySelectorAll('#skills .fade-slide-in'),
+                // Projects Section
+                ...document.querySelectorAll('#projects .fade-slide-in'),
+                // Education Section
+                ...document.querySelectorAll('#education .fade-slide-in'),
+                // Contact Section
+                ...document.querySelectorAll('#contact .fade-slide-in'),
+                
+            ];
+
+            // 1. Handle Staggered Delay for skills, feature cards, and social links
+            const staggeredElements = [
+                ...document.querySelectorAll('.skill-tag'), 
+                ...document.querySelectorAll('.about-features > div'),
+                ...document.querySelectorAll('.project-card'),
+                ...document.querySelectorAll('.social-links a:not(.hero .social-links a)')
+            ];
+
+            staggeredElements.forEach((el, index) => {
+                // Apply a delay based on the index for a cascading effect
+                el.style.transitionDelay = `${(index % 4) * 0.15}s`;
+            });
+
+
+            // 2. Intersection Observer Logic for elements below the fold
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Stop observing once it's visible
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+            // Start observing all targeted elements that require scrolling
+            observedElements.forEach(el => {
+                observer.observe(el);
+            });
+            
+            // 3. Trigger initial animation for Hero elements (always visible)
+            heroElements.forEach((el, index) => {
+                 // Add a small delay for the initial hero elements
+                 if (index > 0) { // Skip the first element (photo) for a slightly better feel
+                     el.style.transitionDelay = `${index * 0.1}s`;
+                 }
+                 el.classList.add('visible');
+            });
+        });
+    </script>
+
+</body>
+</html>
